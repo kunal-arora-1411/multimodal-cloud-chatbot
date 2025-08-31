@@ -11,7 +11,7 @@ boto3
 azure-identity
 azure-mgmt-resource
 azure-ai-textanalytics
-
+langchain_community
 streamlit
 python-dotenv
 speechrecognition
