@@ -6,7 +6,6 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
-from .vectorstore.loader import ensure_vectorstore
 
 # Load env vars (Hugging Face token, etc.)
 load_dotenv()
