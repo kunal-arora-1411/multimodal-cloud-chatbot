@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+
+# Environments
+.env
+.env.*
+venv/
+.venv/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Streamlit
+./.streamlit/
+
+# Model caches and artifacts (keep vectorstore if you rely on it)
+*.pt
+*.bin
+*.safetensors
+*.onnx
+*.npz
+*.npy
+transformers_cache/
+hf_cache/
+
+# Vectorstore artifacts (kept out of git; use Releases)
+backend/vectorstore/index.faiss
+backend/vectorstore/index.pkl
+backend/vectorstore/*.faiss
+backend/vectorstore/*.pkl

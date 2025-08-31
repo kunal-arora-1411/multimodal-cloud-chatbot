@@ -1,0 +1,18 @@
+streamlit
+python-dotenv
+requests
+
+# RAG + embeddings
+langchain
+langchain-community
+sentence-transformers
+faiss-cpu
+
+# Models
+transformers
+torch
+Pillow
+
+# Optional (enable if you keep voice mode)
+faster-whisper
+gTTS
