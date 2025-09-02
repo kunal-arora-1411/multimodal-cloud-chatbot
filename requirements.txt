@@ -17,4 +17,5 @@ python-dotenv
 speechrecognition
 pydub
 gtts
+sentence-transformers
 
