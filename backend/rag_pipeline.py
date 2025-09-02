@@ -6,15 +6,13 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
-from .vectorstore.loader import ensure_vectorstore
 
 # Load env vars (Hugging Face token, etc.)
 load_dotenv()
+print("DEBUG - GROQ_API_KEY loaded:", os.getenv("GROQ_API_KEY"))
 
 # Load retriever
 def load_retriever():
-    # Ensure the vectorstore files are present (download from release if configured)
-    ensure_vectorstore()
     embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     base = Path(__file__).parent
     vs_path = base / "vectorstore"
@@ -39,6 +37,7 @@ prompt = PromptTemplate(
     )
 )
 
+
 # Load GROQ API key from env
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
@@ -56,7 +55,7 @@ def call_groq_llm(prompt_text):
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt_text}
         ],
-        "temperature": 0.3,
+        "temperature": 0.1,
         "max_tokens": 512
     }
 
