@@ -1,17 +1,20 @@
 # 🌩️ Multimodal Cloud RAG Chatbot
 
 **Ask anything about AWS, Azure, or GCP using Text • Voice • Image.**
-
-> Canva‑ready README you can paste into your repo or publish as a one‑pager.
-
 ---
 
 ## ✨ Highlights
 
+* **Super Fast Inferencing** Bescause of GROQ
 * **RAG over your cloud knowledge** using FAISS + Sentence‑Transformers
 * **GROQ Llama‑3.3‑70B** for high‑quality answers (via REST)
 * **Modes:** Text chat · Voice input (Whisper) · Image caption → query (BLIP)
 * **Streamlit UI** with a simple chat history
+
+---
+## Test My Work
+
+https://multimodal-cloud-chatbot-d7u49vfmkjyow5t3ufjtcg.streamlit.app/
 
 ---
 
@@ -115,48 +118,6 @@ Open the URL shown by Streamlit.
 
 ---
 
-## 🧠 Build/Update the Knowledge Base (FAISS)
-
-Here’s a simple script you can use to index a folder of Markdown/PDF/TXT docs into FAISS.
-
-```python
-# tools/build_faiss.py
-from pathlib import Path
-from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
-from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
-
-docs_dir = Path("docs")  # put your content here
-
-# Load text & PDFs (extend as needed)
-loaders = []
-loaders.append(DirectoryLoader(str(docs_dir), glob="**/*.txt", loader_cls=TextLoader))
-loaders.append(DirectoryLoader(str(docs_dir), glob="**/*.md", loader_cls=TextLoader))
-loaders.append(DirectoryLoader(str(docs_dir), glob="**/*.pdf", loader_cls=PyPDFLoader))
-
-all_docs = []
-for L in loaders:
-    all_docs.extend(L.load())
-
-# Embeddings & FAISS index
-emb = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-vs = FAISS.from_documents(all_docs, emb)
-
-out = Path("backend/vectorstore")
-out.mkdir(parents=True, exist_ok=True)
-vs.save_local(str(out), index_name="index")
-print("Saved FAISS index to:", out)
-```
-
-Run it:
-
-```bash
-pip install pypdf  # if indexing PDFs
-python tools/build_faiss.py
-```
-
----
-
 ## 🖥️ Using the App
 
 ### 1) Text mode
@@ -231,13 +192,5 @@ python tools/build_faiss.py
 
 ## 📜 License
 
-MIT (or add your preferred license)
-
----
-
-## 📷 Optional: Add a Banner/Screenshots (for Canva)
-
-* Hero banner with title + emoji
-* 3 tiles showing **Text**, **Voice**, **Image** modes
-* Simple flow diagram (from the ASCII above)
+MIT Licensed
 
