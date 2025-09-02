@@ -18,4 +18,5 @@ speechrecognition
 pydub
 gtts
 sentence-transformers
+faster_whisper
 
